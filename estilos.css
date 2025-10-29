@@ -24,12 +24,16 @@ body {
     width: 200px;
     height: auto;
 
-    /* Prefijos -webkit- y -moz- para asegurar compatibilidad de la animación en distintos navegadores */
-    -webkit-animation: animacionLogo 3s ease-in-out forwards;
-    -moz-animation: animacionLogo 3s ease-in-out forwards;
-    animation: animacionLogo 3s ease-in-out forwards;
+    /* Prefijos -webkit- y -moz- para asegurar compatibilidad de la animación en distintos navegadores
+       Se combinan dos animaciones:
+       1. animacionLogo: Se ejecuta una vez al cargar la página (dura 3s).
+       2. flotar: Comienza después de 3s (animation-delay), y se repite infinitamente. */
+    -webkit-animation: animacionLogo 3s ease-in-out forwards, flotar 3s ease-in-out 3s infinite alternate;
+    -moz-animation: animacionLogo 3s ease-in-out forwards, flotar 3s ease-in-out 3s infinite alternate;
+    animation: animacionLogo 3s ease-in-out forwards, flotar 3s ease-in-out 3s infinite alternate;
 
-    /* Se agregan prefijos para que la transición funcione correctamente en navegadores antiguos */
+    /* Se agregan prefijos para que la transición del hover funcione correctamente en navegadores antiguos.
+       Esto permite que el logo crezca suavemente al pasar el mouse sobre él. */
     -webkit-transition: transform 0.3s ease-in-out;
     -moz-transition: transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
@@ -50,19 +54,14 @@ body {
 }
 
 .banner:hover .logo {
-    transform: scale(1.1);
-
-    /* Se usan los prefijos para mejorar la compatibilidad de la animación de flotación */
-    -webkit-animation: flotar 3s ease-in-out infinite alternate;
-    -moz-animation: flotar 3s ease-in-out infinite alternate;
-    animation: flotar 3s ease-in-out infinite alternate;
+    transform: scale(1.15);
 }
 
 @keyframes flotar {
     from {
-        transform: scale(1.1) translateY(0);
+        transform: scale(1) translateY(0);
     }
     to {
-        transform: scale(1.1) translateY(-10px);
+        transform: scale(1) translateY(-10px);
     }
 }
