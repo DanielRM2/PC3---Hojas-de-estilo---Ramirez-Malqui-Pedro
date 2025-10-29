@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: black;
+}
+
+.banner {
+    padding: 4rem;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.916);
+
+    /* Se usa -webkit- para compatibilidad con navegadores basados en WebKit (como Chrome o Safari) */
+    /* Se usa -moz- para compatibilidad con navegadores Mozilla (como Firefox) */
+    -webkit-transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    -moz-transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+
+    /* Prefijos -webkit- y -moz- para asegurar compatibilidad de la animación en distintos navegadores */
+    -webkit-animation: animacionLogo 3s ease-in-out forwards;
+    -moz-animation: animacionLogo 3s ease-in-out forwards;
+    animation: animacionLogo 3s ease-in-out forwards;
+
+    /* Se agregan prefijos para que la transición funcione correctamente en navegadores antiguos */
+    -webkit-transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+@keyframes animacionLogo {
+    from {
+        transform: scale(0) rotateY(0deg);
+    }
+    to {
+        transform: scale(1) rotateY(360deg);
+    }
+}
+
+.banner:hover {
+    background-color: #bdff77f3;
+    box-shadow: 0 15px 30px rgb(255, 255, 255);
+}
+
+.banner:hover .logo {
+    transform: scale(1.1);
+
+    /* Se usan los prefijos para mejorar la compatibilidad de la animación de flotación */
+    -webkit-animation: flotar 3s ease-in-out infinite alternate;
+    -moz-animation: flotar 3s ease-in-out infinite alternate;
+    animation: flotar 3s ease-in-out infinite alternate;
+}
+
+@keyframes flotar {
+    from {
+        transform: scale(1.1) translateY(0);
+    }
+    to {
+        transform: scale(1.1) translateY(-10px);
+    }
+}
